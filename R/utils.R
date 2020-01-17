@@ -22,9 +22,9 @@ map_attributes <- function(item) {
             item_formatted[[i]] <- list(NULL = TRUE)
         } else if (is.list(item[[i]])) {
             if (any(names(item[[i]]) %in% "")) {
-                item_formatted[[i]] <- list(L = unname(item[[i]]))
+                item_formatted[[i]] <- list(L = map_attributes(unname(item[[i]])))
             } else {
-                item_formatted[[i]] <- list(M = item[[i]])
+                item_formatted[[i]] <- list(M = map_attributes(item[[i]]))
             }
         } else if (is.raw(item[[i]])) {
             item_formatted[[i]] <- list(B = jsonlite::base64_enc(item[[i]]))
