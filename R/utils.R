@@ -47,3 +47,24 @@ map_attributes <- function(item) {
     names(item_formatted) <- names(item)
     return(item_formatted)
 }
+
+post_process <- function(l) {
+    lapply(l, format_element)
+}
+
+format_element <- function(x) {
+    stopifnot(length(x) == 1)
+    fun <- switch(
+        names(x),
+        BOOL = as.logical,
+        L = post_process,
+        M = function(l) post_process(l),
+        N = as.numeric,
+        NS = as.numeric,
+        "NULL" = function(l) NULL,
+        S = as.character,
+        SS = as.character,
+        stop("Incorrect type: ", names(x))
+    )
+    fun(x[[1]])
+}

@@ -30,7 +30,7 @@ get_item <- function(table, item, ...) {
                 Key = map_attributes(item))
     out <- dynamoHTTP(verb = "POST", body = bod, target = "DynamoDB_20120810.GetItem", ...)
     if (length(out$Item)) {
-        return(out$Item)
+        return(post_process(out$Item))
     } else {
         return(NULL)
     }
