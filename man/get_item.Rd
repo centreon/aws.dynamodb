@@ -4,12 +4,14 @@
 \alias{get_item}
 \title{Get Dynamo DB Item}
 \usage{
-get_item(table, item, ...)
+get_item(table, item, attributes = NULL, ...)
 }
 \arguments{
 \item{table}{A character string specifying the table name, or an object of class \dQuote{aws_dynamodb_table}.}
 
 \item{item}{A list of key-value pairs. If the table only has a primary key, this should specify the primary key attribute name and value for the desired item. If a composite primary key is used, then both attribute names and values must be specified.}
+
+\item{attributes}{A vector of character string specifying attributes to fetch from the dynamodb table.}
 
 \item{\dots}{Additional arguments passed to \code{\link{dynamoHTTP}}.}
 }

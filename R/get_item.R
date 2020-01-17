@@ -2,6 +2,7 @@
 #' @description Get an item from a Dynamo DB tables
 #' @param table A character string specifying the table name, or an object of class \dQuote{aws_dynamodb_table}.
 #' @param item A list of key-value pairs. If the table only has a primary key, this should specify the primary key attribute name and value for the desired item. If a composite primary key is used, then both attribute names and values must be specified.
+#' @param attributes A vector of character string specifying attributes to fetch from the dynamodb table.
 #' @param \dots Additional arguments passed to \code{\link{dynamoHTTP}}.
 #' @return A list.
 #' @references
@@ -25,9 +26,10 @@
 #'   delete_table(tab)
 #' }
 #' @export
-get_item <- function(table, item, ...) {
+get_item <- function(table, item, attributes = NULL, ...) {
     bod <- list(TableName = get_tablename(table),
                 Key = map_attributes(item))
+    if (!is.null(attributes)) bod <- c(bod, list("AttributesToGet" = as.list(attributes)))
     out <- dynamoHTTP(verb = "POST", body = bod, target = "DynamoDB_20120810.GetItem", ...)
     if (length(out$Item)) {
         return(post_process(out$Item))
