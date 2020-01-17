@@ -1,4 +1,26 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
 # AWS Dynamo DB Client
+
+## DISCLAIMER
+
+This project has been forked from https://github.com/cloudyr/aws.dynamodb/ which is not maintained anymore.
+Few improvements have been done too such as automatic post processing of results and to be able to use a local version of dynamodb.
+
+## aws.dynamodb
 
 **aws.dynamodb** is a package for the [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) API
 
@@ -24,9 +46,8 @@ list_tables()
 # Create a table
 tab <- create_table(
   table = "Music",
-  attributes = list(Artist = "S", SongTitle = "S"),
-  primary_key = "Artist",
-  sort_key = "SongTitle"
+  attributes = list(Artist = "S"),
+  primary_key = "Artist"
 )
 
 # put item in database
@@ -37,7 +58,7 @@ put_item("Music", list(Artist = "Another Band", SongTitle = "Some Song"))
 get_table(tab)
 
 # get an item
-get_item("Music", "Another Band")
+get_item("Music", c(Artist = "Another Band"))
 
 # cleanup
 delete_table(tab)
@@ -51,22 +72,8 @@ delete_table(tab)
 [![Travis Build Status](https://travis-ci.org/cloudyr/aws.dynamodb.png?branch=master)](https://travis-ci.org/cloudyr/aws.dynamodb)
 [![codecov.io](https://codecov.io/github/cloudyr/aws.dynamodb/coverage.svg?branch=master)](https://codecov.io/github/cloudyr/aws.dynamodb?branch=master)
 
-This package is not yet on CRAN. To install the latest development version you can install from the cloudyr drat repository:
+This package is not yet on CRAN. To install the latest development version you can install github:
 
 ```R
-# latest stable version
-install.packages("aws.dynamodb", repos = c(cloudyr = "http://cloudyr.github.io/drat", getOption("repos")))
+remotes::install_github("centreon/aws.dynamodb")
 ```
-
-Or, to pull a potentially unstable version directly from GitHub:
-
-```R
-if (!require("remotes")) {
-    install.packages("remotes")
-}
-remotes::install_github("cloudyr/aws.dynamodb")
-```
-
-
----
-[![cloudyr project logo](https://i.imgur.com/JHS98Y7.png)](https://github.com/cloudyr)
