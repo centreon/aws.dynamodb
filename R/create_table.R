@@ -64,7 +64,6 @@ function(
     
     # execute request
     out <- dynamoHTTP(verb = "POST", body = bod, target = "DynamoDB_20120810.CreateTable", ...)
-    return(out)
     structure(out$TableDescription, class = "aws_dynamodb_table")
 }
 
