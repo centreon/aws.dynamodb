@@ -4,10 +4,19 @@
 \alias{dynamoHTTP}
 \title{Execute Dynamo DB API Request}
 \usage{
-dynamoHTTP(verb = "GET", headers = list(), body = NULL, target,
+dynamoHTTP(
+  verb = "GET",
+  headers = list(),
+  body = NULL,
+  target,
   verbose = getOption("verbose", FALSE),
-  region = Sys.getenv("AWS_DEFAULT_REGION", "us-east-1"), key = NULL,
-  secret = NULL, session_token = NULL, ...)
+  region = Sys.getenv("AWS_DEFAULT_REGION", "us-east-1"),
+  key = NULL,
+  secret = NULL,
+  session_token = NULL,
+  url = Sys.getenv("AWS_LOCAL_ENDPOINT"),
+  ...
+)
 }
 \arguments{
 \item{verb}{A character string specifying an HTTP verb for the operation.}
