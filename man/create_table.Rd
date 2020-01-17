@@ -5,8 +5,15 @@
 \alias{update_table}
 \title{Create/Update Dynamo DB Table}
 \usage{
-create_table(table, attributes, primary_key, sort_key = NULL,
-  read_capacity = 5, write_capacity = 5, ...)
+create_table(
+  table,
+  attributes,
+  primary_key,
+  sort_key = NULL,
+  read_capacity = 5,
+  write_capacity = 5,
+  ...
+)
 
 update_table(table, read_capacity = 5, write_capacity = 5, ...)
 }

@@ -5,8 +5,13 @@
 \alias{update_item}
 \title{Put an item}
 \usage{
-put_item(table, item, condition = NULL, return_value = c("NONE", "ALL_OLD"),
-  ...)
+put_item(
+  table,
+  item,
+  condition = NULL,
+  return_value = c("NONE", "ALL_OLD"),
+  ...
+)
 
 update_item(table, item, return_value = c("NONE", "ALL_OLD"), ...)
 }
