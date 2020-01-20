@@ -21,7 +21,7 @@ map_attributes <- function(item) {
         if (is.null(item[[i]])) {
             item_formatted[[i]] <- list(NULL = TRUE)
         } else if (is.list(item[[i]])) {
-            if (any(names(item[[i]]) %in% "")) {
+            if (is.null(names(item[[i]])) || any(names(item[[i]]) %in% "")) {
                 item_formatted[[i]] <- list(L = map_attributes(unname(item[[i]])))
             } else {
                 item_formatted[[i]] <- list(M = map_attributes(item[[i]]))
