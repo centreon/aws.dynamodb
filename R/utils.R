@@ -34,13 +34,13 @@ map_attributes <- function(item) {
             if (length(item[[i]]) == 1L) {
                 item_formatted[[i]] <- list(N = item[[i]])
             } else {
-                item_formatted[[i]] <- list(NS = item[[i]])
+                item_formatted[[i]] <- list(NS = as.numeric(na.omit(item[[i]])))
             }
         } else {
             if (length(item[[i]]) == 1L) {
                 item_formatted[[i]] <- list(S = as.character(item[[i]]))
             } else {
-                item_formatted[[i]] <- list(SS = as.character(item[[i]]))
+                item_formatted[[i]] <- list(SS = as.character(na.omit(item[[i]])))
             }
         }
     }
