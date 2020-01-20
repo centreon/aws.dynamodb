@@ -1,4 +1,3 @@
-#' @rdname put_item
 #' @title Put an item
 #' @description Put an item into a Dynamo DB database
 #' @param table A character string specifying the table name, or an object of class \dQuote{aws_dynamodb_table}.
@@ -44,30 +43,6 @@ function(
         bod$ConditionExpression <- condition
     }
     out <- dynamoHTTP(verb = "POST", body = bod, target = "DynamoDB_20120810.PutItem", ...)
-    if (return_value == "NONE") {
-        return(NULL)
-    } else {
-        return(out)
-    }
-}
-
-#' @rdname put_item
-#' @export
-update_item <-
-function(
-  table,
-  item,
-  return_value = c("NONE", "ALL_OLD"),
-  ...
-) {
-    # format items
-    item_formatted <- map_attributes(item)
-    
-    return_value <- match.arg(return_value)
-    bod <- list(TableName = get_tablename(table),
-                ReturnValues = return_value,
-                Item = item_formatted)
-    out <- dynamoHTTP(verb = "POST", body = bod, target = "DynamoDB_20120810.UpdateItem", ...)
     if (return_value == "NONE") {
         return(NULL)
     } else {

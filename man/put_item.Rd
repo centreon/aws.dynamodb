@@ -2,7 +2,6 @@
 % Please edit documentation in R/put_item.R
 \name{put_item}
 \alias{put_item}
-\alias{update_item}
 \title{Put an item}
 \usage{
 put_item(
@@ -12,8 +11,6 @@ put_item(
   return_value = c("NONE", "ALL_OLD"),
   ...
 )
-
-update_item(table, item, return_value = c("NONE", "ALL_OLD"), ...)
 }
 \arguments{
 \item{table}{A character string specifying the table name, or an object of class \dQuote{aws_dynamodb_table}.}
@@ -49,5 +46,4 @@ Put an item into a Dynamo DB database
 }
 \references{
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_PutItem.html}{API Guide: PutItem}
-  \href{https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateItem.html}{API Guide: UpdateItem}
 }
